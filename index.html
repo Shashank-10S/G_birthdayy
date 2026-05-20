@@ -749,7 +749,7 @@
 <!-- Hidden audio — link to a royalty-free song URL or embed a song file -->
 <audio id="bg-music" loop>
   <!-- ✏️ REPLACE with a direct link to an MP3 file of your choice -->
-  <source src="music.mp3" type="audio/mpeg"/>
+  <source src="music1.mp3" type="audio/mpeg"/>
 </audio>
 
 <script>
@@ -835,29 +835,6 @@ function closeLightbox() {
   document.getElementById('lightbox').classList.remove('active');
 }
 
-// ── Photo upload ──
-function handleUpload(e) {
-  const files = Array.from(e.target.files);
-  const grid  = document.getElementById('photo-grid');
-  const slot  = document.getElementById('upload-slot');
-
-  files.forEach(file => {
-    const reader = new FileReader();
-    reader.onload = ev => {
-      const card = document.createElement('div');
-      card.className = 'photo-card';
-      card.innerHTML = `<img src="${ev.target.result}" alt="Our Memory"/>
-                        <div class="photo-caption">Our beautiful memory 💕</div>`;
-      grid.insertBefore(card, slot);
-      card.querySelector('img').addEventListener('click', () => {
-        document.getElementById('lightbox-img').src = ev.target.result;
-        document.getElementById('lightbox').classList.add('active');
-      });
-      observer.observe(card);
-    };
-    reader.readAsDataURL(file);
-  });
-}
 
 // ── Cake ──
 let candlesBlown = false;
